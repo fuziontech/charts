@@ -1,19 +1,11 @@
+kind: PersistentVolumeClaim
 apiVersion: v1
-kind: PersistentVolume
 metadata:
-  name: bigdisk-nfs
-  labels:
-    type: iscsi 
+  name: bigdisk-nfs 
 spec:
-  capacity:
-    storage: 16Ti
+  storageClassName: "drobo-iscsi-nfs"
   accessModes:
     - ReadWriteOnce
-  iscsi:
-      targetPortal: 192.168.86.2:3260
-      portals: ['192.168.86.2:3260', '192.168.86.3:3260']
-      iqn: iqn.2005-06.com.drobo:b800i.tdd1132b0906.id1
-      lun: 0
-      fsType: ext4
-      readOnly: false 
-
+  resources:
+    requests:
+      storage: 16Ti

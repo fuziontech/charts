@@ -36,7 +36,8 @@ service:
 
 persistence:
   enabled: true
-  existingCliam: bigdisk-nfs 
+  existingClaim: bigdisk-nfs 
+
 ## For creating the StorageClass automatically:
 storageClass:
   create: true

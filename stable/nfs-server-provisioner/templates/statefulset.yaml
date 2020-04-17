@@ -112,9 +112,9 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
 
-      {{- if not .Values.persistence.enabled }}
+      {{- if .Values.persistence.enabled }}
       volumes:
         - name: data
           persistentVolumeClaim:
             claimName: {{ .Values.persistence.existingClaim }}
-      {{- end }}
+      {{ end }}
