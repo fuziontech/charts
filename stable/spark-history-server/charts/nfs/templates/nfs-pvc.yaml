@@ -1,4 +1,5 @@
 {{- if .Values.enableExampleNFS }}
+{{- if not .Values.persistence.pvc.existingClaim -}}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -15,4 +16,5 @@ spec:
   resources:
     requests:
       storage: {{ .Values.pvcStorage }}
+{{- end }}
 {{- end }}

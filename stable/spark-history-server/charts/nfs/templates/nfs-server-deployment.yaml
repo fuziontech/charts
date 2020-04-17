@@ -38,5 +38,5 @@ spec:
       volumes:
         - name: mypvc
           persistentVolumeClaim:
-            claimName: {{ include "nfs.fullname" . }}
+            claimName: {{ if .Values.persistence.pvc.existingClaim }}{{ .Values.persistence.pvc.existingClaim }}{{- else }}{{ include "nfs.fullname" . }}{{- end }} 
 {{- end }}
